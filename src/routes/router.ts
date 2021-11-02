@@ -2,6 +2,14 @@ import { Request, Response, Router } from "express"
 import multer from "multer"
 
 const router = Router()
+const fileFilter = (req, file, cb) => {
+  if (file.mimetype == "text/plain") {
+    cb(null, true)
+  } else {
+    cb(null, false)
+    return cb(new Error("Only .txt files are allowed!"))
+  }
+}
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, "./src/temp/uploads")
@@ -13,14 +21,7 @@ const storage = multer.diskStorage({
 })
 const multerConfig = multer({
   storage,
-  fileFilter: (req, file, cb) => {
-    if (file.mimetype == "*/txt") {
-      cb(null, true)
-    } else {
-      cb(null, false)
-      return cb(new Error("Only .txt format allowed!"))
-    }
-  },
+  fileFilter,
 })
 router.get("/", (req: Request, res: Response) => {
   res.render("index")
