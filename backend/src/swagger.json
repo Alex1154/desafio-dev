@@ -1,0 +1,88 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "byCoders api documentação",
+    "description": "Api de teste do byCoders",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/data/import": {
+      "post": {
+        "tags": ["Import"],
+        "summary": "Importação de aquivos txt",
+        "description": "Criação dos dados do aquivo txt",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "type": "file"
+                  }
+                },
+                "example": {
+                  "file": "file"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "created"
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": ["Import"],
+        "summary": "Listar os dados do aquivo",
+        "description": "Rota que lista os dados do arquivo",
+        "responses": {
+          "200": {
+            "description": "sucess",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "tipo": {
+                        "type": "string"
+                      },
+                      "data": {
+                        "type": "string"
+                      },
+                      "valor": {
+                        "type": "number"
+                      },
+                      "Cpf": {
+                        "type": "string"
+                      },
+                      "Cartão": {
+                        "type": "string"
+                      },
+                      "Hora": {
+                        "type": "string"
+                      },
+                      "DonoDaLoja": {
+                        "type": "string"
+                      },
+                      "NomeLoja": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
