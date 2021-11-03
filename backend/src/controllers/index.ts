@@ -38,6 +38,7 @@ class UploadController implements UploadControllerInterface {
     }
     return datas
   }
+
   async create(file: Express.Multer.File): Promise<string> {
     const files = await this.loadFile(file)
     const repository = getRepository(Cnab)
@@ -55,6 +56,14 @@ class UploadController implements UploadControllerInterface {
 
     return response.status(200).json(responseDatas)
   }
+  async unloadFile(file: Express.Multer.File): Promise<void> {
+    const repository = getRepository(Cnab)
+    const queryRunner = repository.manager.connection.createQueryRunner()
+    await queryRunner.connect()
+    await queryRunner.startTransaction()
+    await queryRunner.query("delete from Cnab_table")
+    await queryRunner.commitTransaction()
+    await queryRunner.release()
+  }
 }
-
 export { UploadController }
