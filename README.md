@@ -14,11 +14,7 @@
 # Possíveis erros
 
 - caso o docker-compose não suba o banco de dados da aplicação você pode rodar o compando do docker manualmente `docker run --name cnab_postgres -e POSTGRES_PASSWORD=docker -p 5432:5432 -d postgres`
-<<<<<<< HEAD
 - caso a rota do do container que você irá criar(5432:5432) esteja ocupada troque ela para uma de sua escolha(exemplo: 5433:5433), ou pare o processo que esta rondando nela já que se tiver o postgres já instalado em sua maquina provavelmente o container não irá subir, verifique como fazer esse processo em seu sistema operacional.
-=======
-- lembre-se de che
->>>>>>> 4aa71afd82f98ee2b6188cd63da792ca28e8e273
 
 # Desafio programação - para vaga desenvolvedor
 
