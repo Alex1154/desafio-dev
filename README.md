@@ -1,3 +1,0 @@
-# CNAB API
-
-## Introduction

@@ -34,6 +34,7 @@
           }
         }
       },
+
       "get": {
         "tags": ["Import"],
         "summary": "Listar os dados do aquivo",
@@ -79,6 +80,36 @@
                   }
                 }
               }
+            }
+          }
+        }
+      }
+    },
+
+    "/delete": {
+      "get": {
+        "tags": ["Delete"],
+        "summary": "Deletar os dados do aquivo",
+        "description": "Rota que deleta os dados do arquivo",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "type": "file"
+                  }
+                },
+                "example": {
+                  "file": "file"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "created"
             }
           }
         }
